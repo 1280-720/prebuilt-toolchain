@@ -37,16 +37,17 @@ jobs:
     - name: Clone source code
       env:
         KERNEL: 3.4
-      run: 
+      run: |
         git clone --depth=1 https://gitlab.com/hadzhioglu/padavan-ng.git /opt/rt-n56u
         mkdir -p /opt/toolchain/
-    - name : Building toolchain
+    - name: Building toolchain
+      run: |
         cd /opt/rt-n56u/toolchain
         ./build_toolchain.sh
         cd /opt/rt-n56u/toolchain/out
         tar zcvf mipsel-linux-uclibc.tar.xz .
         sudo mv -f *.xz /opt/toolchain/
-    - name : Upload packages
+    - name: Upload packages
       uses: actions/upload-artifact@master
       if: always()
       with:
