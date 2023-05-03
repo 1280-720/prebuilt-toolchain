@@ -44,7 +44,7 @@ jobs:
         cd /opt/rt-n56u/toolchain
         ./build_toolchain.sh
         cd /opt/rt-n56u/toolchain/out
-        tar zcvf /opt/toolchain/mipsel-linux-uclibc.tar.xz .
+        sudo tar zcvf /opt/toolchain/mipsel-linux-uclibc.tar.xz .
     - name: Upload packages
       uses: actions/upload-artifact@master
       if: always()
